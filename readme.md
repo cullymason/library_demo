@@ -29,12 +29,12 @@ would return
 
 ```json
 {
-    'book':
+    "book":
     {
-        'id'=> 1
-        'title': 'Rework',
-        'authors' : [1,2],
-        'categories' : [7]
+        "id": 1
+        "title": "Rework",
+        "authors" : [1,2],
+        "categories" : [7]
     }
 }
 ```
