@@ -9,7 +9,7 @@ class BooksTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 		DB::table('books')->delete();
-		foreach(range(1, 10) as $index)
+		foreach(range(1, 75) as $index)
 		{
 			Book::create([
 				'title'=>$faker->sentence(3)

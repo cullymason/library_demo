@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('BooksTableSeeder');
 		$this->call('AuthorsTableSeeder');
 		$this->command->info('Attaching relationships...');
+		$this->call('AuthorBooksTableSeeder');
+		$this->call('BookCategoryTableSeeder');
+		$this->call('BookUserTableSeeder');
 	}
 
 }
