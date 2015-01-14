@@ -6,7 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"league/fractal": "0.11.*"
+		"league/fractal": "0.11.*",
+		"barryvdh/laravel-ide-helper": "~1.11"
 	},
 	"autoload": {
 		"classmap": [
@@ -16,7 +17,11 @@
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"
-		]
+		],
+
+	  "psr-4": {
+		"Library\\" : "library/"
+	  }
 	},
 	"scripts": {
 		"post-install-cmd": [
