@@ -2,13 +2,12 @@
 
 namespace Library\Repositories;
 
+use Library\Emberify\Emberifiable;
 use Library\Transformers\CategoryTransformer;
-use League\Fractal\Resource\Collection;
-use League\Fractal\Manager;
-use Library\Serializer\EmberSerializer;
 
-class CategoryRepository {
 
+class CategoryRepository implements RepositoryInterface {
+    use Emberifiable;
     /**
      * @var \Category
      */
@@ -16,19 +15,13 @@ class CategoryRepository {
     /**
      * @var CategoryTransformer
      */
-    private $categoryTransformer;
-    /**
-     * @var Manager
-     */
-    private $manager;
+    private $transformer;
 
 
-    function __construct(\Category $category, CategoryTransformer $categoryTransformer, Manager $manager)
+    function __construct(\Category $category, CategoryTransformer $transformer)
     {
         $this->category = $category;
-        $this->categoryTransformer = $categoryTransformer;
-
-        $this->manager = $manager;
+        $this->transformer = $transformer;
     }
 
     public function all()
@@ -37,16 +30,10 @@ class CategoryRepository {
         return $categories;
     }
 
-    /**
-     * @param $categories
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function emberify($categories)
+    public function find($id)
     {
-        $this->manager->setSerializer(new EmberSerializer());
-        $resource = new Collection($categories, new CategoryTransformer, 'categories');
-
-
-        return $this->manager->createData($resource)->toArray();
+        $categories = $this->category->find($id);
+        return $categories;
     }
+
 }

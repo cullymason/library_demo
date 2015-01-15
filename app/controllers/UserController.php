@@ -1,36 +1,34 @@
 <?php
 
-use Library\Repositories\CategoryRepository;
+use Library\Repositories\UserRepository;
 
-class CategoryController extends \BaseController {
-
+class UserController extends \BaseController {
 	/**
-	 * @var CategoryRepository
+	 * @var UserRepository
 	 */
-	private $categoryRepository;
+	private $userRepository;
 
-	function __construct(CategoryRepository $categoryRepository)
+	function __construct(UserRepository $userRepository)
 	{
-		$this->categoryRepository = $categoryRepository;
+		$this->userRepository = $userRepository;
 	}
-
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /category
+	 * GET /user
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$categories = $this->categoryRepository->all();
+		$users = $this->userRepository->all();
 
-		return $this->categoryRepository->emberify($categories);
+		return $this->userRepository->emberify($users);
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /category/create
+	 * GET /user/create
 	 *
 	 * @return Response
 	 */
@@ -41,7 +39,7 @@ class CategoryController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /category
+	 * POST /user
 	 *
 	 * @return Response
 	 */
@@ -52,21 +50,20 @@ class CategoryController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /category/{id}
+	 * GET /user/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-
 	public function show($id)
 	{
-		$category = $this->categoryRepository->find($id);
-		return $this->categoryRepository->emberify($category);
+		$user = $this->userRepository->find($id);
+		return $this->userRepository->emberify($user);
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /category/{id}/edit
+	 * GET /user/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -78,7 +75,7 @@ class CategoryController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /category/{id}
+	 * PUT /user/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -90,7 +87,7 @@ class CategoryController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /category/{id}
+	 * DELETE /user/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

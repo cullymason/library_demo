@@ -1,36 +1,34 @@
 <?php
 
-use Library\Repositories\CategoryRepository;
+use Library\Repositories\AuthorRepository;
 
-class CategoryController extends \BaseController {
-
+class AuthorController extends \BaseController {
 	/**
-	 * @var CategoryRepository
+	 * @var AuthorRepository
 	 */
-	private $categoryRepository;
+	private $authorRepository;
 
-	function __construct(CategoryRepository $categoryRepository)
+	function __construct(AuthorRepository $authorRepository)
 	{
-		$this->categoryRepository = $categoryRepository;
+		$this->authorRepository = $authorRepository;
 	}
-
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /category
+	 * GET /author
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$categories = $this->categoryRepository->all();
+		$authors = $this->authorRepository->all();
 
-		return $this->categoryRepository->emberify($categories);
+		return $this->authorRepository->emberify($authors);
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /category/create
+	 * GET /author/create
 	 *
 	 * @return Response
 	 */
@@ -41,7 +39,7 @@ class CategoryController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /category
+	 * POST /author
 	 *
 	 * @return Response
 	 */
@@ -52,21 +50,21 @@ class CategoryController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /category/{id}
+	 * GET /author/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-
 	public function show($id)
 	{
-		$category = $this->categoryRepository->find($id);
-		return $this->categoryRepository->emberify($category);
+		$author = $this->authorRepository->find($id);
+
+		return $this->authorRepository->emberify($author);
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /category/{id}/edit
+	 * GET /author/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -78,7 +76,7 @@ class CategoryController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /category/{id}
+	 * PUT /author/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -90,7 +88,7 @@ class CategoryController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /category/{id}
+	 * DELETE /author/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
